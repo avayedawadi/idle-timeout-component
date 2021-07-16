@@ -98,12 +98,6 @@ is highly recommended.
 | `timeToLogout`         | `timeToLogout`     | `Number`     | 60                                               | This is the number in seconds that is the amount of time that the user is notified for before being completely logged out. This is how long the modal is shown for. |
 | `timeToNotify`         | `timeToNotify`     | `Number`     | 10                                               | This is the number in seconds that is the amount of time that the user is idle before they receive notification that they will be logged out. |
 
-## Methods
-
-| Method  | Type       |
-|---------|------------|
-| `timer` | `(): void` |
-
 ## Events
 
 | Event    | Type                                | Description                    |
