@@ -1,0 +1,30 @@
+{
+  "name": "idle-timeout-component",
+  "version": "0.0.0",
+  "description": "Webcomponent idle timeout component built using Lit",
+  "main": "dist/idle-timeout-component.js",
+  "module": "dist/idle-timeout-component.js",
+  "keywords": [
+  ],
+  "scripts": {
+    "start": "tsc",
+    "build": "tsc",
+    "prepublish": "tsc"
+  },
+  "dependencies": {
+    "lit": "^2.0.0-rc.2",
+    "lit-element": "^2.5.1",
+    "lit-html": "^1.4.1",
+    "tslib": "^2.3.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/avayedawadi/idle-timeout-component.git"
+  },
+  "author": "Avaye Dawadi",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/avayedawadi/idle-timeout-component/issues"
+  },
+  "homepage": "https://github.com/avayedawadi/idle-timeout-component#readme"
+}
