@@ -1,15 +1,54 @@
 import { __decorate } from "tslib";
 import { html, css, LitElement, property, state } from 'lit-element';
+/**
+ *
+ *  @element idle-timeout-component
+ *
+ *
+ * */
 export class IdleTimeoutComponent extends LitElement {
     constructor() {
         super(...arguments);
+        /**
+        * This is the number in seconds that is the amount of time that the user is idle before they receive notification that they will be logged out.
+        * @type {Number}
+        */
         this.timeToNotify = 10;
+        /**
+        * This is the number in seconds that is the amount of time that the user is notified for before being completely logged out. This is how long the modal is shown for.
+        * @type {Number}
+        */
         this.timeToLogout = 60;
+        /**
+        * This is the text at the top of the modal popup.
+        * @type {String}
+        */
         this.modalHeaderText = "Are you still there?";
+        /**
+        * This is the text in the body of the modal popup.
+        * @type {String}
+        */
         this.modalBodyText = "Indicate if you are still there or you will be logged out!";
+        /**
+        * This is the text on the logout button for the modal.
+        * @type {String}
+        */
         this.logoutButtonText = "Logout";
+        /**
+        * This is the text on the button that allows the user to continue using the site.
+        * @type {String}
+        */
         this.remainButtonText = "Still here";
+        /**
+        * This is the text that the title of the website flashes when the notification of logout is showing (when the modal is showing).
+        * @type {String}
+        */
         this.logoutWarning = "Logging out!";
+        /**
+        * This is a boolean value about whether or not the timer should be started yet. Gives the developer more control.
+        * @type {String}
+        */
+        this.timerStarted = "started";
         this.firstTime = true;
         this.switch = true;
         this.currentTime = this.timeToLogout;
@@ -71,16 +110,12 @@ export class IdleTimeoutComponent extends LitElement {
     }
     render() {
         if (this.firstTime) {
-            /*this.interval = setInterval(() => {
-              this.currentTime = this.currentTime - 1;
-              if (this.currentTime <= 0) {
-                this.currentTime = this.timeToLogout;
-              }
-            }, 1000);*/
             clearInterval(this.notifyTimeInterval);
             this.notifyTimeInterval = setInterval(() => {
                 if (this.windowIndex == Math.max(...JSON.parse(localStorage.windowArray)) && !this.notificationBool) {
-                    localStorage.notifyTime = --localStorage.notifyTime;
+                    if (this.timerStarted === "started") {
+                        localStorage.notifyTime = --localStorage.notifyTime;
+                    }
                 }
                 if (localStorage.notifyTime == 0 && !this.notificationBool) {
                     localStorage.logout = 1;
@@ -168,9 +203,6 @@ export class IdleTimeoutComponent extends LitElement {
     `;
     }
 }
-//animation: timer ${this.timeToLogout}s linear infinite forwards;
-//stroke-dashoffset:${300-this.currentTime/this.timeToLogout*300}px;
-//${(this.currentTime == 0 ? "disabled":"")}
 IdleTimeoutComponent.styles = css `
 
     .modalBodyText{
@@ -333,6 +365,9 @@ __decorate([
 __decorate([
     property({ type: String })
 ], IdleTimeoutComponent.prototype, "logoutWarning", void 0);
+__decorate([
+    property({ type: String })
+], IdleTimeoutComponent.prototype, "timerStarted", void 0);
 __decorate([
     state()
 ], IdleTimeoutComponent.prototype, "currentTime", void 0);

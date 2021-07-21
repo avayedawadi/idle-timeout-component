@@ -51,6 +51,12 @@ export class IdleTimeoutComponent extends LitElement {
   */
   @property({type: String}) logoutWarning = "Logging out!"
 
+  /**
+  * This is a boolean value about whether or not the timer should be started yet. Gives the developer more control.
+  * @type {String}
+  */
+  @property({type: String}) timerStarted = "started";
+
   firstTime = true;
   logoutTime: any;
   notifyTime: any;
@@ -136,7 +142,9 @@ export class IdleTimeoutComponent extends LitElement {
       clearInterval(this.notifyTimeInterval);
       this.notifyTimeInterval = setInterval(() => {
         if (this.windowIndex == Math.max(...JSON.parse(localStorage.windowArray)) && !this.notificationBool) {
-          localStorage.notifyTime = --localStorage.notifyTime;
+          if(this.timerStarted === "started"){
+           localStorage.notifyTime = --localStorage.notifyTime;
+          }
         }
         if (localStorage.notifyTime == 0 && !this.notificationBool) {
           localStorage.logout = 1;

@@ -97,6 +97,7 @@ is highly recommended.
 | `switch`               |                    | `boolean`    | true                                             |                                                  |
 | `timeToLogout`         | `timeToLogout`     | `Number`     | 60                                               | This is the number in seconds that is the amount of time that the user is notified for before being completely logged out. This is how long the modal is shown for. |
 | `timeToNotify`         | `timeToNotify`     | `Number`     | 10                                               | This is the number in seconds that is the amount of time that the user is idle before they receive notification that they will be logged out. |
+| `timerStarted`| `timerStarted`| `String`| `started`| If the property is equal to 'started' then the timer will tick down. However, if it is not, the timer will not move.|
 
 ## Events
 
